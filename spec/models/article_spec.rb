@@ -1,20 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-  subject { described_class.new }
-  describe "validations" do
-    it "is valid with valid attributes" do
-      subject.title = Faker::Name
-      subject.body = Faker::Name
-      expect(subject).to be_valid
+  describe 'Associations' do
+    it 'should have many comments' do
+      should have_many(:comments).dependent(:destroy)
     end
-    it "is not valid without title" do
-      subject.body = Faker::Name
-      expect(subject).not_to be_valid
+  end
+
+  describe 'Validations' do
+    it 'should validate the presence of title' do
+      should validate_presence_of(:title)
     end
-    it "is not valid without body" do
-      subject.title = Faker::Name
-      expect(subject).not_to be_valid
+
+    it 'should validate the presence of body' do
+      should validate_presence_of(:body)
     end
   end
 end
