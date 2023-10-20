@@ -3,5 +3,6 @@ FactoryBot.define do
     commenter { "MyString" }
     body { "MyText" }
     article { nil }
+    status { "public" } 
   end
 end

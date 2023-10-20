@@ -27,14 +27,14 @@ RSpec.describe ArticlesController, type: :controller do
   describe 'POST #create' do
     context 'with valid parameters' do
       it 'creates a new article' do
-        valid_attributes = { article: { title: 'New Article', body: 'This is the body' } }
+        valid_attributes = { article: { title: 'New Article', body: 'This is the body', status: 'public' } }
         expect {
           post :create, params: valid_attributes
         }.to change(Article, :count).by(1)
       end
 
       it 'redirects to the created article' do
-        valid_attributes = { article: { title: 'New Article', body: 'This is the body' } }
+        valid_attributes = { article: { title: 'New Article', body: 'This is the body', status: 'public' } }
         post :create, params: valid_attributes
         expect(response).to redirect_to(Article.last)
       end
